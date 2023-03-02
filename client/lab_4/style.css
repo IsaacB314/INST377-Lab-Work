@@ -1,6 +1,3 @@
-/*
-Form Styles
-*/
 * {
   box-sizing: border-box;
 }
@@ -33,7 +30,7 @@ body {
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(144, 144, 144);
 }
 
 
@@ -49,7 +46,7 @@ h2 {
 }
 
 form {
-  accent-color: hsla(120, 27%, 61%, 0.482);
+  accent-color: hsla(120, 100%, 50%, 0.482);
 }
 
 /*
@@ -76,12 +73,6 @@ form {
   flex:1;
 }
 
-.header {
-  padding-top: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 1.5rem;
-}
 
 
 /*
@@ -95,12 +86,12 @@ form {
   /* this will push other blocks out of the way */
 
   /* colors */
-  background-color: #b026b0;
-  color: #fff835;
+
+  color: #4a4a4a;
 
   /* shapes */
-  border: 4px dashed;
   border-radius: 6px;
+  border: 4px dashed;
   font-size: 1.5rem;
   padding: 1.25rem;
   margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
@@ -115,7 +106,6 @@ form {
   Rules can be combined on a block to apply the 'cascade' in order
   So you can use two classnames in a single class attribute
   like: <div class="box section">
-
   Rules may combine in unexpected ways - remember that the LAST thing written in this file will have "priority"
   And will be what displays in your client
 */
@@ -132,39 +122,19 @@ form {
 }
 
 .left_section {
-  background-color: #b026b0;
-  color: #fff835;
-  border: 2px dashed;
-  border-radius: 4px;
-
-  width: fit-content;
-  height:fit-content;
+  background-color: rgba(0, 139, 139, 0.8);
+  flex: 0 1 auto;
+  margin: 1rem;
   padding: 1.5rem;
-  margin: 0 auto;
-  display: flex;
-  justify-content: flex-start;
-  
-}
-
-.content_grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap
 }
 
 .right_section {
-  background-color: #b026b0;
-  color: #fff835;
-  border-radius: 4px;
-  width: fit-content;
-  height:fit-content;
-  padding:1.5rem;
+  background-color: rgba(255, 224, 138, 0.7);
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
-  border: 2px dashed;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
 /*
@@ -174,18 +144,17 @@ form {
 */
 
 .footer {
-  display: block;
-  border: 2px dashed;
-  border-radius: 4px;
   flex-shrink: 0;
-  padding: 2rem;
-  background-color: #b026b0;
+  padding: 1rem;
+  background-color: rgba(0, 139, 139, 0.8);
   font-size: 1.2rem;
   font-weight: 600;
+  position: sticky;
+  bottom: 0;
 }
 
 .footer a {
-  color: #fff835;
+  color: rgba(255, 224, 138, 1);
   text-decoration: underline;
 }
 
@@ -261,15 +230,12 @@ div.carousel {
     means annoying pop-ins won't happen
     but it also means you need to format your images to be compatible
     or they will stretch weird
-
     - try a tall one and see what happens
     - change the height on a fixed image size and see what happens
     - now make sure that images are _always_ square
     - ... there's a reason crop tools are popular in image editors
    */
-  object-fit: cover;
   width: 150px; 
-  height: 150px;
 }
 
 .prev,
@@ -288,49 +254,63 @@ div.carousel {
 .prev:focus,
 .next:focus {
   margin: 0;
-  border-color:hsla(120, 100%, 50%, 0.482)
   /* Pick a good border colour and check out how it works with your buttons */
 }
 
 .prev:hover,
 .next:hover {
-  background-color:rgb(246, 169, 93)
   /* Pick a good background colour for your hover pseudoclass */
 }
 
 
-
-
 form input {
-    /* This is a hack to make sure our boxes line up with one another nicely */
-    width: 100%;
-    width: -moz-available;          /* WebKit-based browsers will ignore this. */
-    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-    width: fill-available;
+  /* This is a hack to make sure our boxes line up with one another nicely */
+  width: 100%;
+  width: -moz-available;          /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
 
-    /* here we are setting white space correctly */
-    margin-bottom: 1rem;
-    height: 2rem;
-    border-radius: 4px;
+  /* here we are setting white space correctly */
+  margin-bottom: 1rem;
+  height: 2rem;
+  border-radius: 4px;
+}
+
+form label {
+  width: 100%;
+  width: -moz-available;          /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
+  align-items: flex-start;
+
+  display: block; /* this turns the label text into a box we can set margins on */
+  margin-bottom: 0.5rem;
+}
+
+/* How To Write A Media Query For Small Screens */
+
+@media only screen and (max-width: 736px){
+  /* Rules in here will only apply when a screen is the correct size */
+  /* check it out by using your developer tools to shrink your screen-size */
+  .container {
+    background-color: rgba(204, 8, 162, 0.65);
+    flex-direction: column;
   }
 
-  form label {
+  .right_section{
+    flex: 1 1 auto;
+    justify-content: flex-start;
+  }
+
+  .left_section{
+    flex: 1 1 auto;
+  }
+
+  .box{
     width: 100%;
     width: -moz-available;          /* WebKit-based browsers will ignore this. */
     width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
     width: fill-available;
     align-items: flex-start;
-
-    display: block; /* this turns the label text into a box we can set margins on */
-    margin-bottom: 0.5rem;
   }
-
-/* How To Write A Media Query For Small Screens */
-
-@media only screen and (max-width: 736px){
-    /* Rules in here will only apply when a screen is the correct size */
-    /* check it out by using your developer tools to shrink your screen-size */
-    .container {
-      background-color: rgba(204, 8, 162, 0.65);
-    }
 }
