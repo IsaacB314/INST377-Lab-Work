@@ -87,7 +87,8 @@
   
     /* colors */
   
-    color: #4a4a4a;
+    background-color: rgba(17, 187, 124, 0.8);;
+    color: rgba(255, 255, 255, 0.8);
   
     /* shapes */
     border-radius: 6px;
@@ -111,7 +112,7 @@
   */
   
   .box {
-    background-color: rgba(239, 239, 239, 0.40);
+    background-color: rgba(78, 83, 80, 0.4);
     border: 2px dashed;
     border-radius: 4px;
   
@@ -122,14 +123,16 @@
   }
   
   .left_section {
-    background-color: rgba(0, 139, 139, 0.8);
+    background-color: rgba(17, 187, 124, 0.8);
+    color: rgba(255, 255, 255, 0.8);
     flex: 0 1 auto;
     margin: 1rem;
     padding: 1.5rem;
   }
   
   .right_section {
-    background-color: rgba(255, 224, 138, 0.7);
+    background-color: rgba(17, 187, 124, 0.8);
+    color: rgba(255, 255, 255, 0.8);
     flex: 1 2 auto;
     margin: 1rem;
     align-items: center;
@@ -146,7 +149,8 @@
   .footer {
     flex-shrink: 0;
     padding: 1rem;
-    background-color: rgba(0, 139, 139, 0.8);
+    background-color: rgba(17, 187, 124, 0.8);;
+    color: rgba(255, 255, 255, 0.8);
     font-size: 1.2rem;
     font-weight: 600;
     position: sticky;
