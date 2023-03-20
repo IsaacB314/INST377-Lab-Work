@@ -1,9 +1,49 @@
-<!--
-    This is how to build the CSS-only load animation from loading.io    
-    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Isaac Bowman's Labs</title>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class = "header h1">
+                <h1>ISAAC BOWMAN's Labs for INST377</h1>
+            </div>
+            <div class="container">
+                <div class="left_section box">
+                    <h2>Form Inputs</h2>
+                        <form action="https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json" class="box main_form" name="resto">
+                            <button type="button" id="data_load">Load County Data</button>
+                            <div>
+                                <label for="resto">Restaraunt Name</label>
+                                <input type="text" id="resto" name="resto">
+                            </div>
+                            <button type="button" id="filter_button">Filter Data</button>
+                            <button type="button" id="generate">Generate List</button>
+                        </form>
 
-    This is helpful for showing your client-side users when data is loading,
-    since there's otherwise no sign your app is thinking about something!
+                </div>
+                <div class="right_section box">
+                    <h2>Local Restaurants</h2>
+                    <ol class="box" id="restaurant_list">
+                        A list of Local Restaurants
+                    </ol>
+                    <div class="lds-ellipsis" id="data_load_animation"></div><div></div><div></div><div></div><div></div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">IsaacB314 <a href="https://github.com/IsaacB314">My Github Account</a></footer>
+        <script src="./script.js"></script>
+    </body>
+</html>
 
-    Try placing it at the same level in your element tree as your Submit button
--->
+
+
+<!-- Bring in your successful HTML/CSS from the Flexbox lab -->
+<!-- Your page will need a form in it with an 'action' to /api and a single text field with an id/name of "resto" -->
+<!-- If you open /routes/apiRoutes and go to line 38 you will find the server side answer to your request! -->
+
+<!-- Temporarily unhook your script.js file from your main index file -->
