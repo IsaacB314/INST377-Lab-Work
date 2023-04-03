@@ -54,7 +54,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   
   /* We need to listen to an "event" to have something happen in our page - here we're listening for a "submit" */
   loadDataButton.addEventListener('click', async (submitEvent) => { // async has to be declared on every function that needs to "await" something
-    console.log('Loading Data'); 
+    console.log('Loading Data');
     loadAnimation.style.display = 'inline-block';
 
     // Basic GET request - this replaces the form Action
