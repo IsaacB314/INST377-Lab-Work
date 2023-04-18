@@ -40,7 +40,15 @@ function getRandomIntInclusive(min, max) {
   }
   
   function markerPlace(array, map) {
+
     console.log('array for markers', array);
+
+    map.eachLayer((layer) => {
+        if (layer instanceof L.Marker) {
+          layer.remove();
+        }
+      });
+
     array.forEach((item) => {
         console.log('markerPlace', item);
         const {coordinates} = item.geocoded_column_1;
@@ -52,6 +60,7 @@ function getRandomIntInclusive(min, max) {
     const mainForm = document.querySelector('.main_form'); // This class name needs to be set on your form before you can listen for an event on it
    // const filterButton = document.querySelector("#filter_button");
     const loadDataButton = document.querySelector('#data_load');
+    const clearDataButton = document.querySelector('#data_clear');
     const generateListButton = document.querySelector('#generate');
     const textField = document.querySelector('#resto');
 
@@ -66,8 +75,10 @@ function getRandomIntInclusive(min, max) {
     const carto = initMap();
 
     const storedData = localStorage.getItem('storedData');
-    const parsedData = JSON.parse(storedData);
-    if (parsedData.length > 0) {
+    let parsedData = JSON.parse(storedData);
+    //parsedData = storedList;
+
+    if (parsedData?.length > 0) {
       generateListButton.classList.remove("hidden");
     }
 
@@ -87,21 +98,19 @@ function getRandomIntInclusive(min, max) {
       // This changes the response from the GET into data we can use - an "object"
       const storedList = await results.json();
       localStorage.setItem('storedData', JSON.stringify(storedList));
-      if (storedList.length > 0) {
+
+      if (storedList?.length > 0) {
         generateListButton.classList.remove('hidden');
       }
 
       loadAnimation.style.display = 'none';
-      console.table(storedList); 
+      //console.table(storedList); 
     });
 
   
     generateListButton.addEventListener('click', (event) => {
       console.log('generate new list');
-      const recallList = localStorage.getItem('storedData');
-      const storedList = JSON.parse(recallList)
-
-      currentList = cutRestaurantList(storedList);
+      currentList = cutRestaurantList(parsedData);
       console.log(currentList);
       injectHTML(currentList);
       markerPlace(currentList, carto);
@@ -114,6 +123,14 @@ function getRandomIntInclusive(min, max) {
         injectHTML(newList);
         markerPlace(currentList, carto);
     })
+
+
+    clearDataButton.addEventListener("click", (event) => {
+        console.log('clear browser data');
+        localStorage.clear();
+        console.log('localStorage Check', localStorage.getItem("storedData"))
+      })
+
   }
 
   function initMap() {
@@ -124,7 +141,9 @@ function getRandomIntInclusive(min, max) {
     }).addTo(carto);
     return carto;
   }
+
   
+
   /*
     This adds an event listener that fires our main event only once our page elements have loaded
     The use of the async keyword means we can "await" events before continuing in our scripts
