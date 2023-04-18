@@ -39,6 +39,15 @@ function getRandomIntInclusive(min, max) {
     })
   }
   
+  function markerPlace(array, map) {
+    console.log('array for markers', array);
+    array.forEach((item) => {
+        console.log('markerPlace', item);
+        const {coordinates} = item.geocoded_column_1;
+        L.marker([coordinates[1], coordinates[0]]).addTo(map);
+    })
+  }
+
   async function mainEvent() { // the async keyword means we can make API requests
     const mainForm = document.querySelector('.main_form'); // This class name needs to be set on your form before you can listen for an event on it
    // const filterButton = document.querySelector("#filter_button");
@@ -53,6 +62,8 @@ function getRandomIntInclusive(min, max) {
     loadAnimation.style.display = 'none';
     generateListButton.classList.add('hidden');
 
+
+    const carto = initMap();
 
     const storedData = localStorage.getItem('storedData');
     const parsedData = JSON.parse(storedData);
@@ -93,6 +104,7 @@ function getRandomIntInclusive(min, max) {
       currentList = cutRestaurantList(storedList);
       console.log(currentList);
       injectHTML(currentList);
+      markerPlace(currentList, carto);
     })
 
     textField.addEventListener('input', (event) => {
@@ -100,7 +112,17 @@ function getRandomIntInclusive(min, max) {
         const newList = filterList(currentList, event.target.value);
         console.log(newList);
         injectHTML(newList);
+        markerPlace(currentList, carto);
     })
+  }
+
+  function initMap() {
+    const carto = L.map('map').setView([38.98, -76.93], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(carto);
+    return carto;
   }
   
   /*

@@ -5,7 +5,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Isaac Bowman's Labs</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+        crossorigin=""/>
+
         <link rel="stylesheet" href="style.css"/>
+
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+        crossorigin=""></script>
     </head>
     <body>
         <div class="wrapper">
@@ -26,7 +35,8 @@
 
                 </div>
                 <div class="right_section box">
-                    <h2>Local Restaurants</h2>
+                    <h2>Local Restaurant List</h2>
+                    <div id="map" class="box"></div>
                     <ol class="box" id="restaurant_list">
                         A list of Local Restaurants
                     </ol>

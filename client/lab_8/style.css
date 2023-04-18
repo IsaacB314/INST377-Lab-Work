@@ -322,7 +322,12 @@
   /* Bring in your successful CSS from week 4 */
   /* In your #map rule, set map to display:none; to temporarily hide your map box */
   
-  
+    #map{
+      width:400px;
+      height:380px;
+      margin-bottom: 1rem;
+    }
+
   /* 
       New code bonus: pure CSS data loading icon
       This comes from loading.io/css - it's nice to show that something is happening!
